@@ -1,18 +1,21 @@
 import { NavBar } from './components/navbar';
 import { useLocation, Routes, Route } from 'react-router-dom';
 import { Home, ImageProcessing, CaptureImages } from './routes/index';
+import { AnimatePresence } from 'framer-motion';
 
 const App = () => {
   const location = useLocation();
 
   return (
-    <div className='w-screen h-screen bg-background'>
+    <div className='w-screen h-screen bg-background overflow-hidden'>
       <NavBar />
-      <Routes location={location} key={location.pathname}>
-        <Route path='/' element={<Home />} />
-        <Route path='/image-processing' element={<ImageProcessing />} />
-        <Route path='/capture-images' element={<CaptureImages />} />
-      </Routes>
+      <AnimatePresence exitBeforeEnter={true} initial={false}>
+        <Routes location={location} key={location.pathname}>
+          <Route path='/' element={<Home />} />
+          <Route path='/image-processing' element={<ImageProcessing />} />
+          <Route path='/capture-images' element={<CaptureImages />} />
+        </Routes>
+      </AnimatePresence>
     </div>
   );
 };
