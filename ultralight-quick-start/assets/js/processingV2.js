@@ -1,24 +1,24 @@
-var Start;
-var Stop;
-var Exp;
-var TimerExp;
-var downloadTimer;
-var Width;
+let Start;
+let Stop;
+let Exp;
+let TimerExp;
+let downloadTimer;
+let Width;
 
-var NDVI = false;
-var FLIR = false;
-var RGB = false;
+let NDVI = false;
+let FLIR = false;
+let RGB = false;
 
-var Red = '#FF0000'; //🔴
-var Blue = '#a46bf0'; //🔵
-var Grey = '#808080'; //⚫
-var Green = '#05FF00'; //🟢
-var Trans = ''; //⚪
-var Orange = '#ee9b00';
-var LightBlue = '#0a9396';
-var LightRed = '#9b2226';
+let Red = '#FF0000'; //🔴
+let Blue = '#a46bf0'; //🔵
+let Grey = '#808080'; //⚫
+let Green = '#05FF00'; //🟢
+let Trans = ''; //⚪
+let Orange = '#ee9b00';
+let LightBlue = '#0a9396';
+let LightRed = '#9b2226';
 
-function mouseDownStart(){
+function mouseDownStart() {
 
     if (Exp) {
         Start = false;
@@ -26,7 +26,7 @@ function mouseDownStart(){
         colorButtons(Grey, Trans, Blue, Grey, Trans);
         console.log("cannot start beceause exporting");
     }
-    else if(Stop){
+    else if (Stop) {
         Start = true;
         Exp = false;
         Stop = false;
@@ -34,9 +34,9 @@ function mouseDownStart(){
         colorButtons(Green, Trans, Grey, Trans, Grey);
         console.log("start program after stopping");
         widthProgress(0);
-        
 
-        TimerExp = setTimeout(function() {
+
+        TimerExp = setTimeout(function () {
             Exp = false;
             Start = false;
             Stop = false;
@@ -45,7 +45,7 @@ function mouseDownStart(){
             console.log("timer start ended");
             widthProgress(100);
 
-        } , 10000);
+        }, 10000);
 
     }
     else {
@@ -54,9 +54,9 @@ function mouseDownStart(){
         colorButtons(Green, Trans, Grey, Trans, Grey);
         console.log("Programm started");
         widthProgress(0);
-        
 
-        TimerExp = setTimeout(function() {
+
+        TimerExp = setTimeout(function () {
             Exp = false;
             Start = false;
             Stop = false;
@@ -65,12 +65,12 @@ function mouseDownStart(){
             console.log("done exporting/timer start ended");
             widthProgress(100);
 
-        } , 10000);
+        }, 10000);
     }
 
 }
 
-function mouseDownStop(){
+function mouseDownStop() {
     Start = false;
     Exp = false;
     Stop = true;
@@ -79,44 +79,44 @@ function mouseDownStop(){
     clearTimeout(TimerExp);
     clearInterval(downloadTimer);
     widthProgress(100);
-    
-    
+
+
     console.log("Timer stoped/exporting stoped/program stoped");
 }
 
-function mouseDownExport(){
+function mouseDownExport() {
 
-    if (Stop){
+    if (Stop) {
         Exp = true;
         Stop = false;
         Start = false;
 
         colorButtons(Grey, Trans, Blue, Grey, Trans);
-        
+
         console.log("Start exporting after stopping")
         widthProgress(0);
-        
 
-        TimerExp = setTimeout(function() {
+
+        TimerExp = setTimeout(function () {
             Exp = false;
             Start = false;
             Stop = false;
 
             colorButtons(Trans, Trans, Trans, Trans, Trans);
-            
+
             console.log("done exporting/timer start ended");
             widthProgress(100);
 
-        } , 10000);
+        }, 10000);
     }
-    else if (Start){
+    else if (Start) {
         Exp = false;
         Stop = false;
 
         colorButtons(Green, Trans, Grey, Trans, Grey);
         console.log("cannot start while exporting");
     }
-    else{
+    else {
         Exp = true;
         Stop = false;
         Start = false;
@@ -124,9 +124,9 @@ function mouseDownExport(){
         colorButtons(Grey, Trans, Blue, Grey, Trans);
         console.log("start exporting");
         widthProgress(0)
-          
 
-        TimerExp = setTimeout(function() {
+
+        TimerExp = setTimeout(function () {
             Exp = false;
             Start = false;
             Stop = false;
@@ -135,27 +135,27 @@ function mouseDownExport(){
             console.log("done exporting/timer start ended");
             widthProgress(100);
 
-        } , 10000);
+        }, 10000);
     }
 
 }
 
-function widthProgress(startWidth){
-    if (startWidth == 0){
+function widthProgress(startWidth) {
+    if (startWidth == 0) {
 
-        var timeleft = 9;
-        downloadTimer = setInterval(function(){
-            if(timeleft <= 0){
+        let timeleft = 9;
+        downloadTimer = setInterval(function () {
+            if (timeleft <= 0) {
                 clearInterval(downloadTimer);
             }
             timeleft -= 1;
-            let width = 100- timeleft;
+            let width = 100 - timeleft;
             $('.progress').css('width', `${width}%`);
             $('#progress-number').html(`${width}%`);
             $('#progress-number').css("left", `${width}%`);
         }, 1000);
     }
-    else if(startWidth == 100){
+    else if (startWidth == 100) {
         let width = "0%";
         $('.progress').css('width', width);
         $('#progress-number').html(width);
@@ -170,12 +170,12 @@ function colorButtons(startColor, stopColor, exportColor, startColorBorder, expo
     $('#processing-export-button').css('background-color', exportColor);
 
     $('#processing-start-button').css('border-color', startColorBorder);
-    $('#processing-export-button').css('border-color', exportColorBorder);     
+    $('#processing-export-button').css('border-color', exportColorBorder);
 }
 
 //checkboxes
 
-function RGBFunction(){
+function RGBFunction() {
 
     RGB = true;
     NDVI = false;
@@ -185,7 +185,7 @@ function RGBFunction(){
 
 }
 
-function NDVIFunction(){
+function NDVIFunction() {
 
     NDVI = true;
     RGB = false;
@@ -195,17 +195,17 @@ function NDVIFunction(){
 
 }
 
-function infraFunction(){
+function infraFunction() {
 
     FLIR = true;
     NDVI = false;
     RGB = false;
     console.log(RGB, NDVI, FLIR);
     colorCheckBox(Trans, Trans, LightRed);
-     
+
 }
 
-function colorCheckBox (RGBColor, NDVIColor, infraColor){
+function colorCheckBox(RGBColor, NDVIColor, infraColor) {
 
     $('#RGB-box').css('background-color', RGBColor);
     $('#NDVI-box').css('background-color', NDVIColor);
@@ -213,11 +213,11 @@ function colorCheckBox (RGBColor, NDVIColor, infraColor){
 
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#exportPath').change(v => {
         console.log(v.target.value || 'Not a valid value! 💩');
     });
-    
+
     $('#importPath').change(v => {
         console.log(v.target.value || 'Not a valid value! 💩');
     });
