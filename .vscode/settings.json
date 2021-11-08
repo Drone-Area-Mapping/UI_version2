@@ -22,5 +22,6 @@
     "*.svg.js": "javascriptreact",
     "*.jsx": "javascriptreact",
     ".stylelintrc": "jsonc"
-  }
+  },
+  "cmake.configureOnOpen": false
 }
