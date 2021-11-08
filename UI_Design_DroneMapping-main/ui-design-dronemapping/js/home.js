@@ -1,4 +1,4 @@
-const buttonInput = function() {
+const buttonInput = function () {
     window.location = 'capturing.html';
 }
 
