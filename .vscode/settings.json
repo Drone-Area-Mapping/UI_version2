@@ -1,0 +1,26 @@
+{
+  "git.enabled": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "files.associations": {
+    "*.react.js": "javascriptreact",
+    "*.stories.js": "javascriptreact",
+    "*.action.js": "javascriptreact",
+    "*.reducer.js": "javascriptreact",
+    "*.styles.js": "javascriptreact",
+    "*.styles.react.js": "javascriptreact",
+    "*.styles.jsx": "javascriptreact",
+    "*.svg.js": "javascriptreact",
+    "*.jsx": "javascriptreact",
+    ".stylelintrc": "jsonc"
+  }
+}
