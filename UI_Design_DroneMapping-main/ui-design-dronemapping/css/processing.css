@@ -1,0 +1,412 @@
+
+
+hr {
+    height: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    top: 160%;
+    width: 60%;
+    margin: 0;
+    background: #61B4C6;
+    border: none;
+} 
+
+#processing-btn {
+    opacity: 1;
+}
+
+#processing-box {
+    position: absolute;
+    width: 374px;
+    height: 549px;
+    left: 88px;
+    top: 160px;
+
+    background: linear-gradient(157.89deg, #585858 2.85%, #272727 99.42%, #726F6F 99.43%);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+#import-box {
+    position: absolute;
+    width: 819px;
+    height: 110px;
+    left: 533px;
+    top: 160px;
+    
+    background: linear-gradient(157.89deg, #585858 2.85%, #272727 99.42%, #726F6F 99.43%);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+#stitch-layers-box {
+    position: absolute;
+    width: 815px;
+    height: 280px;
+    left: 533px;
+    top: 295px;
+    
+    
+    background: linear-gradient(157.89deg, #585858 2.85%, #272727 99.42%, #726F6F 99.43%);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+#export-box {
+    position: absolute;
+    width: 819px;
+    height: 110px;
+    left: 533px;
+    top: 600px;
+    
+    background: linear-gradient(157.89deg, #585858 2.85%, #272727 99.42%, #726F6F 99.43%);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+#processing-start-button{
+    border: 2px solid #05FF00;
+    background-color: transparent; 
+    box-sizing: border-box;
+    filter: drop-shadow(6px 6px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 40px;
+
+    position: absolute;
+    width: 145px;
+    height: 79.03px;
+    left: 113px;
+    top: 346px;
+
+    color: white;
+    font-family: Quicksand;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+#processing-stop-button{
+    border: 2px solid #FF0000;
+    background-color: transparent; 
+    box-sizing: border-box;
+    filter: drop-shadow(6px 6px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 40px;
+
+    position: absolute;
+    width: 145px;
+    height: 79.03px;
+    left: 286px;
+    top: 346px;
+
+    color: white;
+    font-family: Quicksand;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+#processing-export-button{
+    position: absolute;
+    width: 318px;
+    height: 79.03px;
+    left: 113px;
+    top: 448px;
+
+    border: 2px solid #a46bf0;
+    background-color: transparent; 
+    box-sizing: border-box;
+    filter: drop-shadow(6px 6px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 40px;
+
+    color: white;
+    font-family: Quicksand;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+#processing-start-button:hover {
+    transition: 0.5s;
+    background-color: #05FF00;
+}
+
+#processing-stop-button:hover {
+    transition: 0.5s;
+    background-color: #FF0000;
+}
+
+#processing-export-button:hover {
+    transition: 0.5s;
+    background-color: #a46bf0;
+}
+
+#images-icon{
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 127px;
+    top: 200px;
+}
+
+#import-icon{
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 557px;
+    top: 174px;
+}
+
+#export-icon{
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 557px;
+    top: 617px;
+}
+
+#layers-icon{
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 552px;
+    top: 312px;
+}
+
+#images-title{
+    position: absolute;
+    width: 186px;
+    height: 41px;
+    left: 182px;
+    top: 170px;
+
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 41px;
+    color: #ffffff;
+}
+
+#import-title{
+
+    position: absolute;
+    width: 465px;
+    height: 41px;
+    left: 634px;
+    top: 150px;
+
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 41px;
+
+    color: #FFFFFF;
+
+}
+
+#layers-title{
+
+    position: absolute;
+    width: 263px;
+    height: 41px;
+    left: 633px;
+    top: 285px;
+
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 41px;
+
+    color: #FFFFFF;
+
+}
+
+#export-title{
+    position: absolute;
+    width: 510px;
+    height: 41px;
+    left: 634px;
+    top: 590px;
+
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 41px;
+
+    color: #FFFFFF;
+
+}
+
+
+.progress-container {
+    position: absolute;
+    height: 30px;
+    width: 292px;
+    left: 126px;
+    top: 568px;
+
+    background:"";
+    border-radius: 38px;
+
+    border: 2px solid #61B4C6; 
+    box-sizing: border-box;
+    filter: drop-shadow(6px 6px 4px rgba(0, 0, 0, 0.25));
+}
+  
+.progress{
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    border-radius: 38px;
+    background: #61B4C6;
+    transition: width 0.4s ease;
+}
+
+#progress-number{
+
+    position: absolute;
+    top:140%;
+    left: 0%;
+    color: white;
+    font-family: Quicksand;
+    font-size: 18px;
+    transition: width 0.4s ease;
+
+
+}
+
+#RGB-box{
+
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 583px;
+    top: 400px;
+
+    border: 2px solid #ee9b00;
+    background-color: transparent; 
+    box-sizing: border-box;
+    filter: drop-shadow(6px 6px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 6px;
+}
+
+#NDVI-box{
+
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 583px;
+    top: 450px;
+
+    border: 2px solid #0a9396;
+    background-color: transparent; 
+    box-sizing: border-box;
+    filter: drop-shadow(6px 6px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 6px;
+
+}
+
+#infra-box{
+
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 583px;
+    top: 500px;
+
+    border: 2px solid #9b2226;
+    background-color: transparent; 
+    box-sizing: border-box;
+    filter: drop-shadow(6px 6px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 6px;
+
+}
+
+#RGB-box:hover {
+    transition: 0.5s;
+    background-color: #ee9b00;
+}
+
+#NDVI-box:hover {
+    transition: 0.5s;
+    background-color: #0a9396;
+}
+
+#infra-box:hover {
+    transition: 0.5s;
+    background-color: #9b2226;
+}
+
+#RGB-box-tag{
+    
+    color: white;
+    font-family: Quicksand;
+    font-size: 24px;
+    line-height: 30px;
+
+    position: absolute;
+    width: 49px;
+    height: 30px;
+    left: 661px;
+    top: 380px;
+
+}
+
+#NDVI-box-tag{
+
+    color: white;
+    font-family: Quicksand;
+    font-size: 24px;
+    line-height: 30px;
+
+    position: absolute;
+    width: 57px;
+    height: 30px;
+    left: 661px;
+    top: 430px;
+
+}
+
+#infra-box-tag{
+
+    position: absolute;
+    width: 187px;
+    height: 30px;
+    left: 662px;
+    top: 480px;
+
+    color: white;
+    font-family: Quicksand;
+    font-size: 24px;
+    line-height: 30px;
+
+}
+
+  
+input[type=text] {
+    border: 2px solid #a46bf0;
+    padding: 3px 3px 3px 10px;
+    background-color: transparent;
+    color: white;
+    font-size: 24px;
+    width: 694px;
+    height: 30px;
+    position: absolute;
+    left: 556px;
+    top: 220px;
+}
+
+  
+input[type=text]:hover {
+    transition: background-color 0.3s ease-in-out;
+    background-color: #a46bf0;
+}
+  
+input[type=text]:focus {
+    background-color: #a46bf0;
+}
+
+
+
+ 
+

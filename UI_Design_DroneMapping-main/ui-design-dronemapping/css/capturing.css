@@ -1,0 +1,232 @@
+:root {
+    --fill-battery: red;
+    --fill-storage: green;
+    --fill-images: green;
+}
+
+hr {
+    height: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    top: 160%;
+    width: 60%;
+    margin: 0;
+    background: #61B4C6;
+    border: none;
+} 
+
+#capture-btn { opacity: 1; }    
+
+.battery-chart, .storage-chart {
+    display: inline-block;
+    top: 250px;
+}
+
+.ldBar path.mainline {
+    fill: url(#gradient) #585858;
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.battery-chart { left: 45%; }
+
+.battery-chart path.mainline { stroke: var(--fill-battery); }
+
+.storage-chart { left: 50%; }
+
+.storage-chart path.mainline { stroke: var(--fill-storage); }
+
+.images-chart {
+    left: 10px;
+    top: 70%;
+}
+
+.images-chart path.mainline { stroke: var(--fill-images) } 
+
+.images-box {
+    position: absolute;
+    width: 400px;
+    height: 560px;
+    left: 5%;
+    top: 20%;   
+    background: linear-gradient(157.89deg, #585858 2.85%, #272727 99.42%, #726F6F 99.43%);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+
+.slidecontainer {
+    left: 10%;
+    position: inherit;
+    width: 80%;
+    height: auto;
+    top: 50%;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+}
+
+#slider {
+    outline: none;
+    width: 100%;
+    height: 8px;
+    background-color: #B9B9B9;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #159AFB), color-stop(100%, #159AFB));
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+#slider::-webkit-slider-runnable-track {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    -webkit-appearance: none;
+}
+
+
+#slider::-webkit-slider-thumb {
+    height: 25px;
+    width: 25px;
+    border: none;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+    -webkit-appearance: none;
+}
+
+#slider::-webkit-slider-thumb:hover {
+    background: #ddd;   
+}
+
+#img-val {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -2rem;
+    font-family: Quicksand;
+    font-size: 18px;
+    color: white;
+}
+
+.slidecontainer p {
+    color: white;
+    font-family: Quicksand;
+    font-size: 18px;
+    justify-self: center;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.ldBar-label {
+    position: absolute;
+    visibility: visible;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Quicksand;
+    color: white;
+    margin-left: 2rem;
+    margin-top: -0.7rem;
+    
+}
+
+.images-chart .ldBar-label {
+    font-size: 18px;
+    margin-left: 0;
+    margin-top: -1.2rem;
+}
+
+.images-chart .ldBar-label::after {
+    content: "/300";
+}
+
+.storage-chart .ldBar-label::after {
+    content: "/100 GB";
+}
+
+#image-text {
+    color: white;
+    font-family: Quicksand;
+    font-size: 18px;
+    justify-self: center;
+    text-align: center;
+    opacity: 0.8;
+    margin-top: 22rem;
+}
+
+#heading-text {
+    position: absolute;
+    margin-left: 2rem;
+    display: flex;
+}
+#images-icon {
+    left: 2rem;
+    margin-top: 2.5rem;
+    width: 36px;
+    height: 30px;
+}
+
+#heading-text p {
+    color: white;
+    font-family: Ubuntu;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 2rem 1rem;
+}
+
+#button-container {
+    width: 100%;
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 8rem;
+    justify-items: center;
+}
+
+.buttons {
+    color: white;
+    font-family: Quicksand;
+    font-size: 24px;
+    margin: 1rem;
+    width: 145px;
+    height: 80px;
+    box-sizing: border-box;
+    background-color: transparent;
+    filter: drop-shadow(6px 6px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 40px;
+}
+
+#start-btn {
+    border: 2px solid #05FF00;
+}
+
+#start-btn:hover {
+    transition: 0.5s;
+    background-color: #05FF00;
+}
+
+#stop-btn {
+    border: 2px solid #FF0000;
+}
+
+#stop-btn:hover {
+    transition: 0.5s;
+    background-color: #FF0000;
+}
+
+#storage-icon, #battery-icon {
+    position: absolute;
+    margin-left: 3.8rem;
+}
+
+#storage-icon {
+    margin-top: 7rem;
+}
+
+#battery-icon {
+    margin-top: 6rem;
+}
+
