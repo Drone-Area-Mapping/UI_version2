@@ -34,7 +34,7 @@ const NavLink = ({ id, route, name }) => {
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          className={`absolute bottom-0 h-0.5 bg-blue-300 w-full`}
+          className='absolute bottom-0 h-0.5 bg-blue-300 w-full'
         ></motion.div>
       )}
     </Link>
