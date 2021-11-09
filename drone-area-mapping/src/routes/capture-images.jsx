@@ -21,7 +21,9 @@ const CaptureImages = () => {
               <SmallButton name='Start' color='startBtn' />
               <SmallButton name='Stop' color='stopBtn' />
             </div>
-            <BigButton name='create' />
+            <div className='h-1/6'>
+              <BigButton name='create' />
+            </div>
           </div>
         </BigBox>
         {/* Right */}
