@@ -20,14 +20,16 @@ const Home = () => {
         className='w-5/6 h-full flex flex-row justify-between items-center'
       >
         {/* Title Left */}
-        <div className='w-1/3 space-y-10'>
+        <div className='w-1/3 flex flex-col justify-between h-5/6'>
           <p className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-title'>
             Drone Area Mapping <br />
             <span className='text-xl md:text-2xl lg:text-3xl xl:text-4xl opacity-80 font-text font-light'>
               Capture images during flight, and <br /> map them!
             </span>
           </p>
-          <BigButton text='Get Started!' />
+          <div className='w-full h-1/6 flex items-center'>
+            <BigButton text='Get Started!' />
+          </div>
           {/* Image Bottom */}
           <div className='w-full'>
             <motion.img

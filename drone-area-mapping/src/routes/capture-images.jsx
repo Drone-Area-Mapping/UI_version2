@@ -15,9 +15,11 @@ const CaptureImages = () => {
       <div className='w-5/6 h-full flex flex-row justify-between items-center'>
         {/* Left */}
         <BigBox title='Images'>
-          <div className='flex flex-row space-x-4'>
-            <SmallButton name='Start' color='startBtn' />
-            <SmallButton name='Stop' color='stopBtn' />
+          <div className='flex flex-col'>
+            <div className='flex flex-row space-x-4'>
+              <SmallButton name='Start' color='startBtn' />
+              <SmallButton name='Stop' color='stopBtn' />
+            </div>
           </div>
         </BigBox>
         {/* Right */}
