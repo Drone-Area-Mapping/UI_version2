@@ -31,7 +31,7 @@ MyApp::MyApp() {
   ///
   /// Load a page into our overlay's View
   ///
-  overlay_->view()->LoadURL("file:///html/home.html");
+  overlay_->view()->LoadURL("file:///index.html");
 
   ///
   /// Register our MyApp instance as an AppListener so we can handle the
