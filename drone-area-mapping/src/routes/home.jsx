@@ -9,7 +9,7 @@ const Home = () => {
       exit='exit'
       variants={pageTransition}
     >
-      <div className='w-1/2 bg-black h-14'> sss</div>
+      <div className='w-1/2 bg-black h-14'></div>
     </motion.div>
   );
 };
