@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "./static/css/main.bfc47a3a.chunk.css",
+    "main.js": "./static/js/main.b3c2bfc7.chunk.js",
+    "main.js.map": "./static/js/main.b3c2bfc7.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.5ecfdbfd.js",
+    "runtime-main.js.map": "./static/js/runtime-main.5ecfdbfd.js.map",
+    "static/css/2.84b7cfbd.chunk.css": "./static/css/2.84b7cfbd.chunk.css",
+    "static/js/2.500b4593.chunk.js": "./static/js/2.500b4593.chunk.js",
+    "static/js/2.500b4593.chunk.js.map": "./static/js/2.500b4593.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/2.84b7cfbd.chunk.css.map": "./static/css/2.84b7cfbd.chunk.css.map",
+    "static/css/main.bfc47a3a.chunk.css.map": "./static/css/main.bfc47a3a.chunk.css.map",
+    "static/js/2.500b4593.chunk.js.LICENSE.txt": "./static/js/2.500b4593.chunk.js.LICENSE.txt",
+    "static/media/avans-logo.c2452f31.png": "./static/media/avans-logo.c2452f31.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5ecfdbfd.js",
+    "static/css/2.84b7cfbd.chunk.css",
+    "static/js/2.500b4593.chunk.js",
+    "static/css/main.bfc47a3a.chunk.css",
+    "static/js/main.b3c2bfc7.chunk.js"
+  ]
+}
