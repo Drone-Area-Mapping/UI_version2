@@ -18,6 +18,9 @@ const ImageProcessing = () => {
           <div>
             <SmallButton name="Start" color="startBtn" />
           </div>
+          <div>
+            <SmallButton name="Stop" color="stopBtn" />
+          </div>
         </BigBox>
       </div>
     </motion.div>
