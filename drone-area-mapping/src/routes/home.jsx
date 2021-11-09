@@ -27,7 +27,7 @@ const Home = () => {
               Capture images during flight, and <br /> map them!
             </span>
           </p>
-          <div className='w-full h-1/6 flex items-center'>
+          <div className='w-2/3 flex items-center'>
             <BigButton text='Get Started!' />
           </div>
           {/* Image Bottom */}

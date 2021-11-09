@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { pageTransition } from '../helper/animations';
 import { BigBox } from '../components/big-box';
 import { SmallButton } from '../components/small-button';
+import { BigButton } from '../components/big-button';
 
 const CaptureImages = () => {
   return (
@@ -20,6 +21,7 @@ const CaptureImages = () => {
               <SmallButton name='Start' color='startBtn' />
               <SmallButton name='Stop' color='stopBtn' />
             </div>
+            <BigButton text='create' />
           </div>
         </BigBox>
         {/* Right */}
