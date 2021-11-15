@@ -5,6 +5,7 @@ import { SmallButton } from "../components/small-button";
 import { BigButton } from "../components/big-button";
 import { LongBigBox } from "../components/Long-big-box";
 import { LongSmallBox } from "../components/Long-Small-box";
+import { ProgressBar } from "../components/progressbar";
 const ImageProcessing = () => {
   return (
     <motion.div
@@ -18,12 +19,29 @@ const ImageProcessing = () => {
       <div className="w-5/6 h-full flex flex-row justify-between items-center">
         {/*left box*/}
         <BigBox title="Processing">
-          <div className="h-1/6 flex flex-row space-x-4 justify-between mt-20">
-            <SmallButton name="Start" color="startBtn" />
-            <SmallButton name="Stop" color="stopBtn" />
-          </div>
-          <div className="h-1/6 flex flex-row space-x-4 justify-between mt-10">
-            <BigButton name="Export" />
+          <div className="flex flex-col h-full justify-evenly mt-10">
+            <div className="flex flex-row space-x-4 h-2/6">
+              <SmallButton
+                name="Start"
+                hover="hover:bg-startBtn"
+                borderColor="border-startBtn"
+              />
+              <SmallButton
+                name="Stop"
+                hover="hover:bg-stopBtn"
+                borderColor="border-stopBtn"
+              />
+            </div>
+            <div className="flex flex-col h-full space-y-4 justify-evenly">
+              <BigButton name="Export" />
+              <ProgressBar
+                color="#159AFB"
+                labelFormat="%"
+                max={100}
+                value={50}
+                text="Progress"
+              />
+            </div>
           </div>
         </BigBox>
 
