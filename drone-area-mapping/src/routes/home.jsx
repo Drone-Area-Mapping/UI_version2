@@ -14,20 +14,20 @@ const Home = () => {
       className='w-full h-5/6 flex items-center justify-center'
     >
       <motion.div
-        initial={{ x: 50 }}
+        initial={{ x: 20 }}
         animate={{ x: 0 }}
-        exit={{ x: -50 }}
+        exit={{ x: 20 }}
         className='w-5/6 h-full flex flex-row justify-between items-center'
       >
         {/* Title Left */}
         <div className='w-1/3 flex flex-col justify-between h-5/6'>
-          <p className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-title'>
+          <p className='text-2xl lg:text-3xl xl:text-4xl font-title'>
             Drone Area Mapping <br />
-            <span className='text-xl md:text-2xl lg:text-3xl xl:text-4xl opacity-80 font-text font-light'>
+            <span className='xl:text-2xl lg:text-lg text-base opacity-80 font-text font-light'>
               Capture images during flight, and <br /> map them!
             </span>
           </p>
-          <div className='w-2/3 h-1/6 flex items-center'>
+          <div className='w-2/3 h-1/6 pt-3 pb-3 flex items-center'>
             <BigButton name='Get Started!' />
           </div>
           {/* Image Bottom */}
@@ -48,7 +48,7 @@ const Home = () => {
             alt=''
             whileHover={{ scale: 1.05 }}
           />
-          <p className='w-2/3 font-text text-xl md:text-2xl lg:text-3xl xl:text-4xl opacity-80'>
+          <p className='w-2/3 font-text xl:text-2xl lg:text-lg text-base opacity-80'>
             This software automatically maps the captured images using G.A.V.S.
           </p>
         </div>
