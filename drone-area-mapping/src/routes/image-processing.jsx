@@ -27,9 +27,9 @@ const ImageProcessing = () => {
           </div>
         </BigBox>
 
-        <div className="w-8/12 h-4/5 flex flex-col justify-evenly">
+        <div className="w-8/12 h-full flex flex-col justify-evenly">
           {/*small box top*/}
-          <div class Name="">
+          <div class Name="h-full">
             <LongSmallBox title="Import file path" text="file_download" />
           </div>
 
