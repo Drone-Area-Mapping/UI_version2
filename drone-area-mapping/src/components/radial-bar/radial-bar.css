@@ -1,0 +1,10 @@
+.CircularProgressbar {
+  background: linear-gradient(
+    157.89deg,
+    #585858 2.85%,
+    #272727 99.42%,
+    #726f6f 99.43%
+  );
+  border-radius: 100%;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+}
