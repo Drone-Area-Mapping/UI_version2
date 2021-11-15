@@ -19,8 +19,8 @@ const ImageProcessing = () => {
       <div className="w-5/6 h-full flex flex-row justify-between items-center">
         {/*left box*/}
         <BigBox title="Processing">
-          <div className="flex flex-col h-full justify-evenly mt-10">
-            <div className="flex flex-row space-x-4 h-2/6">
+          <div className="flex flex-col h-full justify-evenly">
+            <div className="flex flex-row space-x-4 h-1/6">
               <SmallButton
                 name="Start"
                 hover="hover:bg-startBtn"
@@ -32,16 +32,16 @@ const ImageProcessing = () => {
                 borderColor="border-stopBtn"
               />
             </div>
-            <div className="flex flex-col h-full space-y-4 justify-evenly">
+            <div className="flex flex-col h-1/6 space-y-4 justify-evenly">
               <BigButton name="Export" />
-              <ProgressBar
-                color="#159AFB"
-                labelFormat="%"
-                max={100}
-                value={50}
-                text="Progress"
-              />
             </div>
+            <ProgressBar
+              color="#159AFB"
+              labelFormat="%"
+              max={100}
+              value={50}
+              text="Progress"
+            />
           </div>
         </BigBox>
 
