@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export const ProgressBar = ({ color, labelFormat, max }) => {
-  const [value, setValue] = useState(100);
+export const ProgressBar = ({ color, labelFormat, max, value }) => {
+  const computedWidth = Math.abs((value / max) * 100);
 
   return (
     <div className='w-full h-1/6'>
@@ -10,7 +10,7 @@ export const ProgressBar = ({ color, labelFormat, max }) => {
           className={`bg-${color} h-full ${
             value !== max ? 'rounded-l-full' : 'rounded-full'
           }`}
-          style={{ width: `${Math.abs((value / max) * 100)}%` }}
+          style={{ width: `${computedWidth}%` }}
         >
           <div className='w-full h-full absolute font-heading font-medium text-md flex justify-center items-center'>
             {labelFormat !== '%' ? `${value}/${max}` : `${value} %`}
