@@ -1,4 +1,5 @@
 const path = require('path');
+const server = require('./server'); //your express app
 
 const { app, BrowserWindow } = require('electron');
 const isDev = require('electron-is-dev');
