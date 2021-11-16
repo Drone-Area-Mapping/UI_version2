@@ -1,5 +1,5 @@
 const path = require('path');
-const server = require('./server'); //your express app
+const server = require('./server');
 
 const { app, BrowserWindow } = require('electron');
 const isDev = require('electron-is-dev');
@@ -7,15 +7,15 @@ const isDev = require('electron-is-dev');
 function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    title: "Drone Area Mapping",
+    width: 1280,
+    height: 720,
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: true
     },
   });
 
-  // and load the index.html of the app.
-  // win.loadFile("index.html");
+  win.removeMenu();
   win.loadURL(
     isDev
       ? 'http://localhost:3000'
