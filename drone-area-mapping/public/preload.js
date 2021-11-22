@@ -1,5 +1,7 @@
 const { ipcRenderer, contextBridge } = require("electron");
 
 contextBridge.exposeInMainWorld("electron", {
-  doThing: () => ipcRenderer.send("sample"),
+  startProcessing: () => ipcRenderer.send("startProcessing"),
+  stopProcessing: () => ipcRenderer.send("stopProcessing"),
+  exportProcessing: () => ipcRenderer.send("exportProcessing"),
 });

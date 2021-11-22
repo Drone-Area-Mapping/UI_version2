@@ -6,6 +6,7 @@ import { BigButton } from "../components/big-button";
 import { LongBigBox } from "../components/Long-big-box";
 import { LongSmallBox } from "../components/Long-Small-box";
 import { ProgressBar } from "../components/progressbar";
+
 const ImageProcessing = () => {
   return (
     <motion.div
@@ -25,15 +26,20 @@ const ImageProcessing = () => {
                 name="Start"
                 hover="hover:bg-startBtn"
                 borderColor="border-startBtn"
+                callBack={() => window.electron.startProcessing()}
               />
               <SmallButton
                 name="Stop"
                 hover="hover:bg-stopBtn"
                 borderColor="border-stopBtn"
+                callBack={() => window.electron.stopProcessing()}
               />
             </div>
             <div className="flex flex-col h-1/6 space-y-4 justify-evenly">
-              <BigButton name="Export" />
+              <BigButton
+                name="Export"
+                callBack={() => window.electron.exportProcessing()}
+              />
             </div>
             <ProgressBar
               color="#159AFB"
