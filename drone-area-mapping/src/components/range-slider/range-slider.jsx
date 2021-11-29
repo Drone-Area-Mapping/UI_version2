@@ -5,7 +5,7 @@ import { sendCommand } from '../../helper/api';
 
 export const RangeSlider = () => {
   const [value, setValue] = useState(
-    localStorage.getItem('captureInterval') || 1
+    JSON.parse(localStorage.getItem('captureInterval')) || 1
   );
 
   const handleChange = (value) => {
