@@ -4,9 +4,9 @@ module.exports = {
       plugins: [require("tailwindcss"), require("autoprefixer")],
     },
   },
-  // webpack: {
-  //   configure: {
-  //     target: "electron-renderer",
-  //   },
-  // },
+  webpack: {
+    configure: {
+      target: "electron-renderer",
+    },
+  },
 };

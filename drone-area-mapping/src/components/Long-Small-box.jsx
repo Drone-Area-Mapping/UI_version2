@@ -1,11 +1,16 @@
 import Icon from '@material-tailwind/react/Icon';
 import { motion } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export const LongSmallBox = ({ text, title }) => {
+const { ipcRenderer } = require('electron');
+
+export const LongSmallBox = ({ text, title, eventType }) => {
   const input = useRef();
-  const [isValidFilepath, setValidFilepath] = useState(false);
   const [filepath, setFilepath] = useState('');
+
+  useEffect(() => {
+    ipcRenderer.on(eventType, (event, obj) => setFilepath(obj.filePaths[0]));
+  }, [eventType]);
 
   return (
     <div className='h-full w-full bg-box shadow-xl rounded-2xl p-6 flex flex-col justify-evenly space-y-2'>
@@ -21,19 +26,19 @@ export const LongSmallBox = ({ text, title }) => {
           ref={input}
           value={filepath}
           placeholder='filepath to images'
+          disabled={true}
           type='text'
-          className='w-full h-full rounded-lg bg-transparent border-2 border-gray-400 focus:border-blue-300 outline-none font-text text-lg lg:text-xl xl:text-2xl p-2'
-          onFocus={() => input.current.select()}
-          onChange={(e) => setFilepath(e.target.value)}
+          className='w-full h-full rounded-lg bg-transparent border-2 border-gray-400 focus:border-blue-300 outline-none font-text text-sm lg:text-base xl:text-lg p-2'
         />
         <motion.button
           whileTap={{ scale: 0.9 }}
           className='outline-none absolute right-16 flex items-center'
+          onClick={() => ipcRenderer.send('open-file-dialog', eventType)}
         >
           <Icon name='folder' size='3xl' />
         </motion.button>
 
-        {isValidFilepath ? (
+        {filepath !== '' ? (
           <Icon name='check_circle' size='4xl' color='lightGreen' />
         ) : (
           <Icon name='cancel' size='4xl' color='red' />

@@ -5,6 +5,7 @@ import { SmallButton } from '../components/small-button';
 import { RangeSlider } from '../components/range-slider/range-slider';
 import { ProgressBar } from '../components/progressbar';
 import { RadialBar } from '../components/radial-bar/radial-bar';
+import { sendCommand } from '../helper/api';
 
 const CaptureImages = () => {
   return (
@@ -24,11 +25,13 @@ const CaptureImages = () => {
                 name='Start'
                 hover='hover:bg-startBtn'
                 borderColor='border-startBtn'
+                callBack={() => sendCommand('startCapturing', true)}
               />
               <SmallButton
                 name='Stop'
                 hover='hover:bg-stopBtn'
                 borderColor='border-stopBtn'
+                callBack={() => sendCommand('stopCapturing', true)}
               />
             </div>
             <div className='w-full space-y-4 flex flex-col items-center'>
@@ -38,10 +41,10 @@ const CaptureImages = () => {
               </p>
             </div>
             <ProgressBar
-              color='#FFE664'
               max={300}
-              value={100}
+              value={150}
               text='Amount of images'
+              isProgress={false}
             />
           </div>
         </BigBox>
