@@ -8,3 +8,10 @@ export const sendCommand = (name, value) => {
         value: value,
     })
 }
+
+export const getData = (header, value) => {
+    ipcRenderer.send(channels.GET_DATA, {
+        header: header,
+        value: value,
+    })
+}

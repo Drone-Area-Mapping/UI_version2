@@ -42,7 +42,7 @@ const CaptureImages = () => {
             </div>
             <ProgressBar
               max={300}
-              value={150}
+              value={250}
               text='Amount of images'
               isProgress={false}
             />

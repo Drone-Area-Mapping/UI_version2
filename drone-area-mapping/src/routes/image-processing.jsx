@@ -8,7 +8,7 @@ import { LongBigBox } from '../components/Long-big-box';
 import { LongSmallBox } from '../components/Long-Small-box';
 import { ProgressBar } from '../components/progressbar';
 import { channels } from '../shared/constants';
-import { sendCommand } from '../helper/api';
+import { sendCommand, getData } from '../helper/api';
 
 const { ipcRenderer } = require('electron');
 
