@@ -7,7 +7,7 @@ const App = () => {
   const location = useLocation();
 
   return (
-    <div className="w-screen h-screen bg-background overflow-x-hidden overflow-y-auto text-white">
+    <div className="w-screen h-screen bg-background overflow-x-hidden overflow-y-auto text-white min-w-5xl min-h-2xl">
       <NavBar />
       <AnimatePresence exitBeforeEnter={true} initial={false}>
         <Routes location={location} key={location.pathname}>

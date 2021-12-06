@@ -25,6 +25,12 @@ module.exports = {
         startBtn: "#05FF00",
         stopBtn: "#FF0000",
       }),
+      minHeight: {
+        '2xl': '42rem',
+      },
+      minWidth: {
+        '5xl': '64rem',
+      },
     },
   },
   variants: {
