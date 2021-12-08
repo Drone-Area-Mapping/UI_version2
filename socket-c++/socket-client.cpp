@@ -5,10 +5,12 @@
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <vector>
 #include <thread>
 #include <atomic>
+#include "json.hpp"
 
 #pragma comment (lib, "Ws2_32.lib")
 
@@ -16,12 +18,33 @@
 #define DEFAULT_IP "127.0.0.1"
 
 using namespace std;
+using json = nlohmann::json;
 
-SOCKET ConnectSocket; // Declare client socket
- 
-atomic<bool> exitProgram(false); // Declare atomic variable for multi-thread communication
+SOCKET ConnectSocket;
 
-string read_line(SOCKET socket) // Function for reading lines sent by Electron JS
+atomic<bool> exitProgram(false);
+
+void decode(string input)
+{
+	// parse and serialize JSON
+	json j_complete = json::parse(input);
+
+	if (j_complete["name"] == "startProcessing") {
+		cout << "Name: " << j_complete["name"] << "\n";
+		cout << "Export: " << j_complete["value"]["export"] << "\n";
+		cout << "Import: " << j_complete["value"]["import"] << "\n";
+	}
+	else 
+		cout << j_complete["name"] << " with value: " << j_complete["value"] << "\n";
+	
+}
+
+void sendjson(string header, int intValue, bool boolValue, string strValue)
+{
+
+}
+
+string read_line(SOCKET socket)
 {
 	vector<char> vector;
 	char buffer;
@@ -45,14 +68,17 @@ string read_line(SOCKET socket) // Function for reading lines sent by Electron J
 	}
 }
 
-void getinput() // Function that reads lines and checks the server connection, runs on a separate thread
+void getinput()
 {
 	string inputLine;
 
 	while (true)
 	{
 		inputLine = read_line(ConnectSocket);
-		if (inputLine != "") printf(inputLine.c_str());
+		if (inputLine != "") {
+			printf(inputLine.c_str());
+			decode(inputLine);
+		}
 		else break;
 	}
 
@@ -61,7 +87,7 @@ void getinput() // Function that reads lines and checks the server connection, r
 	exitProgram = true;
 }
 
-void getoutput() // Function that sends userinput and checks the client connection, runs on a separate thread
+void getoutput()
 {
 	string str;
 
@@ -110,13 +136,12 @@ int main()
 		return 1;
 	}
 
-    // Initialize threads
-	thread inputThread(getinput); 
+	thread inputThread(getinput);
 	thread outputThread(getoutput);
 	
 	// Wait for the threads to shutdown after losing connection
 	inputThread.join();
-	outputThread.detach(); // Blocking thread, using detach to terminate the thread! This doesnt matter because main exits anyway.
+	outputThread.detach(); // Blocking thread, using detach to terminate the thread!
 
 	printf("[Main]: Closing connection with the server . . .");
 
@@ -132,5 +157,5 @@ int main()
 	closesocket(ConnectSocket);
 	WSACleanup();
 
-	exit(0); // Calling exit will clean all threads & pipes
+	exit(0);
 }

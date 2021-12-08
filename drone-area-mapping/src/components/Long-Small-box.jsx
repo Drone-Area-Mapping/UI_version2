@@ -1,16 +1,31 @@
 import Icon from '@material-tailwind/react/Icon';
 import { motion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 const { ipcRenderer } = require('electron');
 
-export const LongSmallBox = ({ text, title, eventType }) => {
+export const LongSmallBox = ({ text, title, eventType, storageName }) => {
   const input = useRef();
-  const [filepath, setFilepath] = useState('');
+  const [filepath, setFilepath] = useState(
+    localStorage.getItem(storageName) || ''
+  );
+
+  const handleChange = useCallback(
+    (filepath) => {
+      if (filepath !== undefined) {
+        setFilepath(filepath);
+        localStorage.setItem(storageName, filepath);
+      } else {
+        setFilepath('');
+        localStorage.removeItem(storageName);
+      }
+    },
+    [storageName]
+  );
 
   useEffect(() => {
-    ipcRenderer.on(eventType, (event, obj) => setFilepath(obj.filePaths[0]));
-  }, [eventType]);
+    ipcRenderer.on(eventType, (event, obj) => handleChange(obj.filePaths[0]));
+  }, [eventType, handleChange]);
 
   return (
     <div className='h-full w-full bg-box shadow-xl rounded-2xl p-6 flex flex-col justify-evenly space-y-2'>
@@ -38,7 +53,7 @@ export const LongSmallBox = ({ text, title, eventType }) => {
           <Icon name='folder' size='3xl' />
         </motion.button>
 
-        {filepath !== '' ? (
+        {filepath !== '' && filepath !== undefined ? (
           <Icon name='check_circle' size='4xl' color='lightGreen' />
         ) : (
           <Icon name='cancel' size='4xl' color='red' />
