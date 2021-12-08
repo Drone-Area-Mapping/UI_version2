@@ -6,8 +6,11 @@ import { RangeSlider } from '../components/range-slider/range-slider';
 import { ProgressBar } from '../components/progressbar';
 import { RadialBar } from '../components/radial-bar/radial-bar';
 import { sendCommand } from '../helper/api';
+import { useState } from 'react';
 
 const CaptureImages = () => {
+  const [start, setStart] = useState(false);
+
   return (
     <motion.div
       initial='initial'
@@ -25,13 +28,22 @@ const CaptureImages = () => {
                 name='Start'
                 hover='hover:bg-startBtn'
                 borderColor='border-startBtn'
-                callBack={() => sendCommand('startCapturing', true)}
+                callBack={() => {
+                  sendCommand('startCapturing', 'TURN_SW_ON');
+                  setStart(true);
+                }}
+                disabled={start}
               />
               <SmallButton
                 name='Stop'
                 hover='hover:bg-stopBtn'
                 borderColor='border-stopBtn'
-                callBack={() => sendCommand('stopCapturing', true)}
+                callBack={() => {
+                  if (start) {
+                    setStart(false);
+                    sendCommand('stopCapturing', 'TURN_SW_OFF');
+                  }
+                }}
               />
             </div>
             <div className='w-full space-y-4 flex flex-col items-center'>

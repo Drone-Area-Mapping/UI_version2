@@ -101,13 +101,13 @@ const ImageProcessing = () => {
                 }}
               />
             </div>
-            <div className='flex flex-col h-1/6 space-y-4 justify-evenly'>
+            {/* <div className='flex flex-col h-1/6 space-y-4 justify-evenly'>
               <BigButton
                 name='Export'
                 callBack={() => sendCommand('exportProcessing', true)}
               />
-            </div>
-            {progress !== 0 && (
+            </div> */}
+            {progress !== 0 && start && (
               <ProgressBar
                 color='#159AFB'
                 labelFormat='%'
