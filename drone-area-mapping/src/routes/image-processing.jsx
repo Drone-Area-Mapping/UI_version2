@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { pageTransition } from '../helper/animations';
 import { BigBox } from '../components/big-box';
 import { SmallButton } from '../components/small-button';
-import { BigButton } from '../components/big-button';
-import { LongBigBox } from '../components/Long-big-box';
+// import { BigButton } from '../components/big-button';
+// import { LongBigBox } from '../components/Long-big-box';
 import { LongSmallBox } from '../components/Long-Small-box';
 import { ProgressBar } from '../components/progressbar';
 import { channels } from '../shared/constants';
@@ -16,7 +16,9 @@ const { ipcRenderer } = require('electron');
 const ImageProcessing = () => {
   const [progress, setProgress] = useState(0);
   const [alert, setAlert] = useState(false);
-  const [start, setStart] = useState(false);
+  const [start, setStart] = useState(
+    JSON.parse(localStorage.getItem('isStarted')) || false
+  );
 
   const handleStart = () => {
     const importPath = localStorage.getItem('importPath') || '';
@@ -30,7 +32,20 @@ const ImageProcessing = () => {
 
       sendCommand('startProcessing', value);
       setStart(true);
+      localStorage.setItem('isStarted', true);
     } else setAlert(true);
+  };
+
+  const handleStop = useCallback(() => {
+    sendCommand('stopProcessing', true);
+    localStorage.setItem('isStarted', false);
+    setStart(false);
+    handleProgress(0);
+  }, []);
+
+  const handleProgress = (value) => {
+    setProgress(value);
+    localStorage.setItem('stitchProgress', value);
   };
 
   useEffect(() => {
@@ -39,15 +54,17 @@ const ImageProcessing = () => {
       try {
         const data = JSON.parse(arg);
 
-        if (data.name === 'stitchProgress') setProgress(data.value);
-        else console.log(arg);
+        if (data.name === 'stitchProgress') {
+          if (data.value === 100) handleStop();
+          else handleProgress(data.value);
+        } else console.log(arg);
       } catch (err) {
         console.log(`Could not parse JSON data 😢 from value ${arg}`);
       }
     });
     // Clean the listener after the component is dismounted
     return () => ipcRenderer.removeAllListeners();
-  }, []);
+  }, [handleStop]);
 
   return (
     <motion.div
@@ -76,11 +93,9 @@ const ImageProcessing = () => {
           </ClosingAlert>
         </motion.div>
       )}
-      {/* Parent Div */}
       <div className='w-5/6 h-full flex flex-row justify-between items-center'>
-        {/*left box*/}
         <BigBox title='Processing'>
-          <div className='flex flex-col h-full justify-evenly'>
+          <div className='h-full my-6 flex flex-col space-y-6'>
             <div className='flex flex-row space-x-4 h-1/6'>
               <SmallButton
                 name='Start'
@@ -94,10 +109,7 @@ const ImageProcessing = () => {
                 hover='hover:bg-stopBtn'
                 borderColor='border-stopBtn'
                 callBack={() => {
-                  if (start) {
-                    sendCommand('stopProcessing', true);
-                    setStart(false);
-                  }
+                  if (start) handleStop();
                 }}
               />
             </div>
@@ -107,7 +119,7 @@ const ImageProcessing = () => {
                 callBack={() => sendCommand('exportProcessing', true)}
               />
             </div> */}
-            {progress !== 0 && start && (
+            {start && (
               <ProgressBar
                 color='#159AFB'
                 labelFormat='%'
@@ -120,7 +132,6 @@ const ImageProcessing = () => {
         </BigBox>
 
         <div className='w-8/12 h-4/5 flex flex-col justify-evenly space-y-4'>
-          {/*small box top*/}
           <div className='h-1/4'>
             <LongSmallBox
               title='Import file path'
@@ -129,13 +140,9 @@ const ImageProcessing = () => {
               storageName='importPath'
             />
           </div>
-
-          {/*Right long big box middle*/}
-          <div className='h-1/2'>
+          {/* <div className='h-1/2'>
             <LongBigBox title='Layers to stich' text='extension' />
-          </div>
-
-          {/*small box bottom*/}
+          </div> */}
           <div className='h-1/4'>
             <LongSmallBox
               title='Export file path'
