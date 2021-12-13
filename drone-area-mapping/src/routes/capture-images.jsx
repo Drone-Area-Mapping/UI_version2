@@ -21,8 +21,10 @@ const CaptureImages = () => {
     isActive: JSON.parse(localStorage.getItem('connected')) || false,
   });
 
-  const [alert, setAlert] = useState(false);
-  const [disable, setDisable] = useState(false);
+  const [alert, setAlert] = useState(true);
+  const [disable, setDisable] = useState(
+    JSON.parse(localStorage.getItem('disabled')) || false
+  );
 
   const handleStart = () => {
     localStorage.setItem('isCapturing', true);
@@ -59,16 +61,17 @@ const CaptureImages = () => {
       const isActive = JSON.parse(localStorage.getItem('connected'));
 
       if (isActive) {
-        setDisable(false);
         localStorage.setItem('connected', false);
+        localStorage.setItem('disabled', false);
+        setDisable(false);
         setState((oldState) => ({
           ...oldState,
           isActive: false,
         }));
       } else {
         handleStop();
+        localStorage.setItem('disabled', true);
         setDisable(true);
-        setAlert(true);
       }
     }, 5000);
     // Listen for the event
@@ -148,7 +151,7 @@ const CaptureImages = () => {
           <div className='w-full h-full flex flex-col items-center justify-center opacity-70'>
             <NoConnection />
             <p className='font-heading font-semibold text-3xl lg:text-4xl text-center'>
-              No connection with the drone.
+              No connection with the drone
             </p>
           </div>
           {alert && (
@@ -167,7 +170,7 @@ const CaptureImages = () => {
             >
               <ClosingAlert color='red'>
                 Please check the connection with the drone, and check if the
-                drone telemtry is working.
+                drone telemetry is working
               </ClosingAlert>
             </motion.div>
           )}
