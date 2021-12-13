@@ -14,6 +14,7 @@ const createWindow = () => {
         title: "Drone Area Mapping",
         width: 1280,
         height: 720,
+        icon: '../build/icon.ico',
         webPreferences: {
             nodeIntegration: true, // ! Settings this to true will enable interaction with NodeJS modules
             contextIsolation: false

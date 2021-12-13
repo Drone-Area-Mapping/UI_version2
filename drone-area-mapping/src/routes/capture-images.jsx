@@ -148,12 +148,6 @@ const CaptureImages = () => {
         </div>
       ) : (
         <>
-          <div className='w-full h-full flex flex-col items-center justify-center opacity-70'>
-            <NoConnection />
-            <p className='font-heading font-semibold text-3xl lg:text-4xl text-center'>
-              No connection with the drone
-            </p>
-          </div>
           {alert && (
             <motion.div
               initial={{
@@ -174,6 +168,12 @@ const CaptureImages = () => {
               </ClosingAlert>
             </motion.div>
           )}
+          <div className='w-full h-full flex flex-col items-center justify-center opacity-70'>
+            <NoConnection />
+            <p className='font-heading font-semibold text-3xl lg:text-4xl text-center'>
+              No connection with the drone
+            </p>
+          </div>
         </>
       )}
     </motion.div>

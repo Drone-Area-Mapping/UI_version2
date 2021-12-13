@@ -1,6 +1,8 @@
 {
   "homepage": "./",
   "name": "drone-area-mapping",
+  "author": "Drone Area Mapping Team",
+  "description": "Software that enables the stitching and capturing of crops using drones.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +23,7 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
-  "main": "electron/main.js",
+  "main": "./electron/main.js",
   "scripts": {
     "start": "craco start",
     "build": "craco build",
@@ -29,7 +31,7 @@
     "eject": "react-scripts eject",
     "dev": "cross-env concurrently -k \"cross-env BROWSER=none npm start\" \"npm:electron\"",
     "electron": "wait-on tcp:3000 && electron .",
-    "package": "electron-builder"
+    "package": "electron-builder -w -c.extraMetadata.main=electron/main.js"
   },
   "eslintConfig": {
     "extends": [
@@ -60,12 +62,17 @@
   },
   "build": {
     "appId": "com.example.electron-cra",
+    "productName": "Drone Area Mapping",
     "files": [
-      "build/**/*",
-      "node_modules/**/*"
+      "electron/**/*",
+      "node_modules/**/*",
+      "src/shared/constants.js"
     ],
+    "win": {
+      "icon": "build/app.ico"
+    },
     "directories": {
-      "buildResources": "assets"
+      "buildResources": "build"
     }
   }
 }
