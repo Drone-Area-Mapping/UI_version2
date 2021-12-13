@@ -1,7 +1,6 @@
 const net = require('net');
-const { ipcMain, webContents } = require('electron');
+const { ipcMain, webContents, app } = require('electron');
 const { channels } = require('../src/shared/constants');
-const { exit } = require('process');
 const port = 1337;
 
 // Create the server
@@ -37,4 +36,11 @@ server.on('connection', (client) => {
   ipcMain.on(channels.SET_DATA, (event, arg) =>
     client.write(`${JSON.stringify(arg)}\n`)
   );
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    server.close(() => console.log('TCP server closed'));
+    server.unref();
+  }
 });

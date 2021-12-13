@@ -19,6 +19,7 @@ const ImageProcessing = () => {
   const [start, setStart] = useState(
     JSON.parse(localStorage.getItem('isStarted')) || false
   );
+  const [done, setDone] = useState(false);
 
   const handleStart = () => {
     const importPath = localStorage.getItem('importPath') || '';
@@ -55,8 +56,10 @@ const ImageProcessing = () => {
         const data = JSON.parse(arg);
 
         if (data.name === 'stitchProgress') {
-          if (data.value === 100) handleStop();
-          else handleProgress(data.value);
+          if (data.value === 100) {
+            handleStop();
+            setDone(true);
+          } else handleProgress(data.value);
         } else console.log(arg);
       } catch (err) {
         console.log(`Could not parse JSON data 😢 from value ${arg}`);
@@ -74,6 +77,25 @@ const ImageProcessing = () => {
       variants={pageTransition}
       className='w-full h-5/6 flex items-center justify-center'
     >
+      {done && (
+        <motion.div
+          initial={{
+            opacity: 1,
+          }}
+          animate={{
+            opacity: 0,
+            transition: {
+              duration: 5.0,
+            },
+          }}
+          onAnimationComplete={() => setDone(false)}
+          className='w-full absolute px-2 py-2 z-10 top-0'
+        >
+          <ClosingAlert color='lightGreen'>
+            Stitching progress sucessfully completed!
+          </ClosingAlert>
+        </motion.div>
+      )}
       {alert && (
         <motion.div
           initial={{
