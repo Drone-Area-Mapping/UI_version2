@@ -30,7 +30,7 @@ export const RangeSlider = () => {
         }}
         onChangeComplete={() => handleChange(value)}
         tooltip={false}
-        min={1}
+        min={6}
         max={100}
       />
     </div>
