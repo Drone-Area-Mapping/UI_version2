@@ -60,3 +60,17 @@ app.on('window-all-closed', () => {
         server.unref();
     }
 });
+
+const child = require('child_process').execFile;
+const path = require('path')
+
+const parentDir = path.resolve(process.cwd(), 'childProcesses\\run.bat');
+
+child(parentDir, (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+
+    console.log(data.toString());
+});

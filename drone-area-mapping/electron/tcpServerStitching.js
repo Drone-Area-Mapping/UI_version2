@@ -6,22 +6,6 @@ const port = 1337;
 // Create the server
 const server = net.createServer();
 
-// // On Windows Only...
-// const { spawn } = require('child_process');
-// const bat = spawn('cmd.exe');
-
-// bat.stdout.on('data', (data) => {
-//   console.log(data.toString());
-// });
-
-// bat.stderr.on('data', (data) => {
-//   console.error(data.toString());
-// });
-
-// bat.on('exit', (code) => {
-//   console.log(`Child exited with code ${code}`);
-// });
-
 // Listen to a port defined by the user
 server.listen(port, () =>
   console.log(`TCP socket server up and running on port ${port} 🙉`)

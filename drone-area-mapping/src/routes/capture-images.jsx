@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { pageTransition } from '../helper/animations';
 import { BigBox } from '../components/big-box';
 import { SmallButton } from '../components/small-button';
@@ -168,7 +168,7 @@ const CaptureImages = () => {
           </div>
         </motion.div>
       ) : (
-        <AnimatePresence>
+        <>
           {alert && (
             <motion.div
               initial={{
@@ -196,7 +196,7 @@ const CaptureImages = () => {
               No connection with the drone
             </p>
           </div>
-        </AnimatePresence>
+        </>
       )}
     </>
   );
