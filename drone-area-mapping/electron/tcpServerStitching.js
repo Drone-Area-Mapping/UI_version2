@@ -6,6 +6,22 @@ const port = 1337;
 // Create the server
 const server = net.createServer();
 
+// // On Windows Only...
+// const { spawn } = require('child_process');
+// const bat = spawn('cmd.exe');
+
+// bat.stdout.on('data', (data) => {
+//   console.log(data.toString());
+// });
+
+// bat.stderr.on('data', (data) => {
+//   console.error(data.toString());
+// });
+
+// bat.on('exit', (code) => {
+//   console.log(`Child exited with code ${code}`);
+// });
+
 // Listen to a port defined by the user
 server.listen(port, () =>
   console.log(`TCP socket server up and running on port ${port} 🙉`)
@@ -19,7 +35,7 @@ server.on('connection', (client) => {
     else
       webContents
         .getAllWebContents()
-        .forEach((wc) => wc.send(channels.GET_DATA, chunk.toString()));
+        .forEach((wc) => wc.send(channels.stitching.GET_DATA, chunk.toString()));
   }); // Send the requested data back to the client);
 
   // When the client requests to end the TCP connection with the server, the server
@@ -33,7 +49,7 @@ server.on('connection', (client) => {
     console.log(`Error: ${err}`);
   });
 
-  ipcMain.on(channels.SET_DATA, (event, arg) =>
+  ipcMain.on(channels.stitching.SET_DATA, (event, arg) =>
     client.write(`${JSON.stringify(arg)}\n`)
   );
 });

@@ -22,8 +22,10 @@ const ImageProcessing = () => {
   const [done, setDone] = useState(false);
 
   const handleStart = () => {
-    const importPath = localStorage.getItem('importPath') || '';
-    const exportPath = localStorage.getItem('exportPath') || '';
+    const importPath =
+      localStorage.getItem('importPath') || '';
+    const exportPath =
+      localStorage.getItem('exportPath') || '';
 
     if (importPath !== '' && exportPath !== '') {
       const value = {
@@ -31,51 +33,56 @@ const ImageProcessing = () => {
         export: exportPath,
       };
 
-      sendCommand('startProcessing', value);
+      sendCommand('stitching', 'startProcessing', value);
       setStart(true);
       localStorage.setItem('isStarted', true);
     } else setAlert(true);
   };
 
   const handleStop = useCallback(() => {
-    sendCommand('stopProcessing', true);
+    sendCommand('stitching', 'stopProcessing', true);
     localStorage.setItem('isStarted', false);
     setStart(false);
     handleProgress(0);
   }, []);
 
-  const handleProgress = (value) => {
+  const handleProgress = value => {
     setProgress(value);
     localStorage.setItem('stitchProgress', value);
   };
 
   useEffect(() => {
     // Listen for the event
-    ipcRenderer.on(channels.GET_DATA, (event, arg) => {
-      try {
-        const data = JSON.parse(arg);
+    ipcRenderer.on(
+      channels.stitching.GET_DATA,
+      (event, arg) => {
+        try {
+          const data = JSON.parse(arg);
 
-        if (data.name === 'stitchProgress') {
-          if (data.value === 100) {
-            handleStop();
-            setDone(true);
-          } else handleProgress(data.value);
-        } else console.log(arg);
-      } catch (err) {
-        console.log(`Could not parse JSON data 😢 from value ${arg}`);
+          if (data.name === 'stitchProgress') {
+            if (data.value === 100) {
+              handleStop();
+              setDone(true);
+            } else handleProgress(data.value);
+          } else console.log(arg);
+        } catch (err) {
+          console.log(
+            `Could not parse JSON data 😢 from value ${arg}`
+          );
+        }
       }
-    });
+    );
     // Clean the listener after the component is dismounted
     return () => ipcRenderer.removeAllListeners();
   }, [handleStop]);
 
   return (
     <motion.div
-      initial='initial'
-      animate='animate'
-      exit='exit'
+      initial="initial"
+      animate="animate"
+      exit="exit"
       variants={pageTransition}
-      className='w-full h-5/6 flex items-center justify-center'
+      className="w-full h-5/6 flex items-center justify-center"
     >
       {done && (
         <motion.div
@@ -89,9 +96,9 @@ const ImageProcessing = () => {
             },
           }}
           onAnimationComplete={() => setDone(false)}
-          className='w-full absolute px-2 py-2 z-10 top-0'
+          className="w-full absolute px-2 py-2 z-10 top-0"
         >
-          <ClosingAlert color='lightGreen'>
+          <ClosingAlert color="lightGreen">
             Stitching progress sucessfully completed!
           </ClosingAlert>
         </motion.div>
@@ -108,28 +115,28 @@ const ImageProcessing = () => {
             },
           }}
           onAnimationComplete={() => setAlert(false)}
-          className='w-full absolute px-2 py-2 z-10 top-0'
+          className="w-full absolute px-2 py-2 z-10 top-0"
         >
-          <ClosingAlert color='red'>
+          <ClosingAlert color="red">
             Please insert an import and export filepath!
           </ClosingAlert>
         </motion.div>
       )}
-      <div className='w-5/6 h-full flex flex-row justify-between items-center'>
-        <BigBox title='Processing'>
-          <div className='h-full my-6 flex flex-col space-y-6'>
-            <div className='flex flex-row space-x-4 h-1/6'>
+      <div className="w-5/6 h-full flex flex-row justify-between items-center">
+        <BigBox title="Processing">
+          <div className="h-full my-6 flex flex-col space-y-6">
+            <div className="flex flex-row space-x-4 h-1/6">
               <SmallButton
-                name='Start'
-                hover='hover:bg-startBtn'
-                borderColor='border-startBtn'
+                name="Start"
+                hover="hover:bg-startBtn"
+                borderColor="border-startBtn"
                 callBack={() => handleStart()}
                 disabled={start}
               />
               <SmallButton
-                name='Stop'
-                hover='hover:bg-stopBtn'
-                borderColor='border-stopBtn'
+                name="Stop"
+                hover="hover:bg-stopBtn"
+                borderColor="border-stopBtn"
                 callBack={() => {
                   if (start) handleStop();
                 }}
@@ -143,34 +150,34 @@ const ImageProcessing = () => {
             </div> */}
             {start && (
               <ProgressBar
-                color='#159AFB'
-                labelFormat='%'
+                color="#159AFB"
+                labelFormat="%"
                 max={100}
                 value={progress}
-                text='Progress'
+                text="Progress"
               />
             )}
           </div>
         </BigBox>
 
-        <div className='w-8/12 h-4/5 flex flex-col justify-evenly space-y-4'>
-          <div className='h-1/4'>
+        <div className="w-8/12 h-4/5 flex flex-col justify-evenly space-y-4">
+          <div className="h-1/4">
             <LongSmallBox
-              title='Import file path'
-              text='file_download'
-              eventType='import-directory'
-              storageName='importPath'
+              title="Import file path"
+              text="file_download"
+              eventType="import-directory"
+              storageName="importPath"
             />
           </div>
           {/* <div className='h-1/2'>
             <LongBigBox title='Layers to stich' text='extension' />
           </div> */}
-          <div className='h-1/4'>
+          <div className="h-1/4">
             <LongSmallBox
-              title='Export file path'
-              text='file_upload'
-              eventType='export-directory'
-              storageName='exportPath'
+              title="Export file path"
+              text="file_upload"
+              eventType="export-directory"
+              storageName="exportPath"
             />
           </div>
         </div>

@@ -4,7 +4,8 @@ const { app, BrowserWindow } = require('electron'); // Load the required electro
 const isDev = require('electron-is-dev'); // Module to check whether we are in the dev environment or not
 
 // Separate script section
-require('./tcpServer'); // Import the TCP socket server, and run it separately
+require('./tcpServerStitching'); // Import the TCP socket server for stitching, and run it separately
+require('./tcpServerTelemetry'); // Import the TCP socket server for tracking telemetry, and run it separately
 require('./api'); // Import the API for communicating with our front-end client (React js in this case)
 
 // Create a new window, our app window
