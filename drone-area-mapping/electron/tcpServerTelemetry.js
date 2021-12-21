@@ -62,9 +62,9 @@ app.on('window-all-closed', () => {
 });
 
 const child = require('child_process').execFile;
-const path = require('path')
+const path = require('path');
 
-const parentDir = path.resolve(process.cwd(), 'electron\\childProcesses\\run.bat');
+const parentDir = path.resolve(process.cwd(), 'childProcesses\\run.bat');
 
 child(parentDir, (err, data) => {
     if (err) {

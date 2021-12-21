@@ -68,6 +68,9 @@
       "node_modules/**/*",
       "src/shared/constants.js"
     ],
+    "extraFiles": [
+      "childProcesses/**/*"
+    ],
     "win": {
       "icon": "build/app.ico"
     },
