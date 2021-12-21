@@ -8,10 +8,3 @@ export const sendCommand = (process, name, value) => {
         value: value,
     })
 }
-
-export const getData = (process, value) => {
-    ipcRenderer.send(channels[process].GET_DATA, {
-        header: process,
-        value: value,
-    })
-}

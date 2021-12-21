@@ -8,16 +8,20 @@ export const RangeSlider = () => {
     JSON.parse(localStorage.getItem('captureInterval')) || 1
   );
 
-  const handleChange = (value) => {
+  const handleChange = value => {
     localStorage.setItem('captureInterval', value);
-    sendCommand('captureInterval', value);
+    sendCommand(
+      'telemetry',
+      'capture',
+      `INTERVAL ${value}`
+    );
   };
 
   return (
-    <div className=' w-full'>
-      <div className='w-11/12 relative'>
+    <div className=" w-full">
+      <div className="w-11/12 relative">
         <div
-          className='absolute -mt-8 font-text font-thin'
+          className="absolute -mt-8 font-text font-thin"
           style={{ left: `${value}%` }}
         >
           {value}
@@ -25,7 +29,7 @@ export const RangeSlider = () => {
       </div>
       <Slider
         value={value}
-        onChange={(value) => {
+        onChange={value => {
           setValue(value);
         }}
         onChangeComplete={() => handleChange(value)}

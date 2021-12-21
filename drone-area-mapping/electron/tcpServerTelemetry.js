@@ -50,7 +50,7 @@ server.on('connection', (client) => {
     });
 
     ipcMain.on(channels.telemetry.SET_DATA, (event, arg) =>
-        client.write(`${JSON.stringify(arg)}\n`)
+        client.write(`${arg.value}\n`)
     );
 });
 
