@@ -66,8 +66,7 @@
     "files": [
       "electron/**/*",
       "node_modules/**/*",
-      "src/shared/constants.js",
-      "childProcesses/**/*"
+      "src/shared/constants.js"
     ],
     "win": {
       "icon": "build/app.ico"
